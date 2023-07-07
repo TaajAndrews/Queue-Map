@@ -8,6 +8,8 @@
 
 ### **Description**
 
+Document and organize your unique perspectives with Queue Map. Identify what makes sense to you and connect the dots for others. Good ideas are forgotten. Great ideas change the world!
+
 ### **Technologies**
 
 - HTML
@@ -21,6 +23,8 @@
 - Figma
 
 ### **Getting Started**
+
+Capture ideas that sparks excitment and wonder. Queue Map helps you gather the best ideas and craft original perspectives for impactful writing.
 
 ### **Screenshots**
 
