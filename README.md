@@ -24,7 +24,7 @@ Document and organize your unique perspectives with Queue Map. Identify what mak
 
 ### **Getting Started**
 
-Capture ideas that sparks excitment and wonder. Queue Map helps you gather the best ideas and craft original perspectives for impactful writing.
+As a user, you will be able to capture ideas that spark excitment and wonder. Queue Map helps you gather the best ideas and craft original perspectives for impactful writing.
 
 ### **Screenshots**
 
