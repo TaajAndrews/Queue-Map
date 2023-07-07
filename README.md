@@ -22,6 +22,10 @@
 
 ### **Getting Started**
 
-### **Some Screenshots of Queue Map In Action**
+### **Screenshots**
+
+ERD
+
+![ERD](./images/ERD-QueueMap.png)
 
 #### **Credits**
