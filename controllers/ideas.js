@@ -16,6 +16,16 @@ const index = async (req, res) => {
   }
 }
 
+const create = async (req, res) => {
+  try {
+    const idea = await Idea.create({ ...req.body })
+    res.send(idea)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   index,
+  create,
 }
