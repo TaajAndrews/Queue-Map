@@ -1,13 +1,13 @@
 {
   "name": "queue-map",
   "version": "1.0.0",
-  "description": "### July 19, 2023",
-  "main": "index.js",
+  "description": "Users will be able to craft unique and compelling writing.",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node --watch server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Taaj Andrews",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
