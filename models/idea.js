@@ -13,7 +13,9 @@ const ideaSchema = new Schema(
     },
     // Will need to separate the values out by comma
     keywords: { type: String },
-    //Add reference to user
+    author: { type: Schema.Types.ObjectId, ref: "User" },
+    mapped: [{ type: Schema.Types.ObjectId, ref: "Map" }],
+    drafted: [{ type: Schema.Types.ObjectId, ref: "Draft" }],
   },
   {
     timestamps: true,

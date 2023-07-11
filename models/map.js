@@ -15,6 +15,9 @@ const mapSchema = new Schema(
     firstSolution: { type: String, required: true },
     secondSolution: { type: String },
     notes: { type: String },
+    author: { type: Schema.Types.ObjectId, ref: "User" },
+    refIdeas: [{ type: Schema.Types.ObjectId, ref: "Idea" }],
+    draftedMaps: [{ type: Schema.Types.ObjectId, ref: "Draft" }],
   },
   {
     timestamps: true,
