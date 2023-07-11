@@ -25,7 +25,17 @@ const create = async (req, res) => {
   }
 }
 
+const update = async (req, res) => {
+  try {
+    const idea = await Idea.findByIdAndUpdate(req.params.idea_id, req.body)
+    res.send(idea)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   index,
   create,
+  update,
 }
