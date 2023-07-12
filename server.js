@@ -4,6 +4,7 @@ const cors = require("cors")
 
 // const AuthRouter = require("./routes/AuthRouter")
 const IdeaRouter = require("./routes/ideas")
+// const MapRouter = require("./routes/maps")
 
 const PORT = process.env.PORT || 3001
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: false }))
 
 // app.use("/auth", AuthRouter)
 app.use("/ideas", IdeaRouter)
+// app.use("/", MapRouter)
 
 app.use("/", (req, res) => {
   res.send(`Connected!`)

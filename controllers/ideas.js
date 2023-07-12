@@ -11,7 +11,9 @@ const index = async (req, res) => {
   try {
     const ideas = await Idea.find({})
     console.log("This is the index page")
-    res.send(ideas)
+    // res.send(ideas)
+    // res.send sends a response
+    res.send("This is the res.send INDEX")
   } catch (error) {
     throw error
   }
