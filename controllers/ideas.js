@@ -36,8 +36,8 @@ const update = async (req, res) => {
 
 const deleteIdea = async (req, res) => {
   try {
-    await Idea.deleteOne({_id: req.params.post_id, req.body})
-    res.send({msg: "Idea Deleted", payload: req.params.idea_id, status: "Ok"})
+    await Idea.deleteOne({ _id: req.params.post_id })
+    res.send({ msg: "Idea Deleted", payload: req.params.idea_id, status: "Ok" })
   } catch (error) {
     throw error
   }
