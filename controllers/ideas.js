@@ -1,6 +1,6 @@
 const Idea = require("../models/idea")
-const Map = require("../models/map")
-const Draft = require("../models/drafts")
+// const Map = require("../models/map")
+// const Draft = require("../models/drafts")
 
 // const index = async (req, res) => {
 //   const ideas = await Idea.find({})
@@ -10,6 +10,7 @@ const Draft = require("../models/drafts")
 const index = async (req, res) => {
   try {
     const ideas = await Idea.find({})
+    console.log("This is the index page")
     res.send(ideas)
   } catch (error) {
     throw error
