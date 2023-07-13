@@ -3,12 +3,12 @@ const controller = require("../controllers/auth")
 const middleware = require("../middleware")
 
 router.post("/signin", controller.Signin)
-router.post("/register", controller.Signup)
+router.post("/signup", controller.Signup)
 router.put(
-  "/update/:user_id",
+  "/password-update/:user_id",
   middleware.stripToken,
   middleware.verifyToken,
-  controller.UpdatePassword
+  controller.PasswordUpdate
 )
 router.get(
   "/session",

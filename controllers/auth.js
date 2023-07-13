@@ -44,7 +44,41 @@ const Signup = async (req, res) => {
   }
 }
 
+const PasswordUpdate = async (req, res) => {
+  try {
+    const { oldPassword, newPassword } = req.body
+    let user = await User.findById(req.params.user_id)
+    let passwordMatch = await middleware.comparePassword(
+      user.passwordDigest,
+      oldPassword
+    )
+    if (passwordMatch) {
+      let passwordDigest = await middleware.hashPassword(newPassword)
+      user = await User.findByIdAndUpdate(req.params.user_id, {
+        passwordDigest,
+      })
+      let payload = {
+        id: user.id,
+        email: user.email,
+      }
+      return res.send({ status: "Password Successfully Updated" })
+    }
+    res
+      .status(401)
+      .send({ status: "Error", msg: "Oh no! Your old password was incorrect." })
+  } catch (error) {
+    console.log(error)
+    res
+      .status(401)
+      .send({
+        status: "Error",
+        msg: "An error has occurred updating your password",
+      })
+  }
+}
+
 module.exports = {
   Signin,
   Signup,
+  PasswordUpdate,
 }
