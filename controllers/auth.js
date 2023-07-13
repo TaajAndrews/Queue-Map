@@ -80,6 +80,10 @@ const CheckSession = async (req, res) => {
   res.send(payload)
 }
 
+//Function for updating username
+
+//Function for changing password
+
 module.exports = {
   Signin,
   Signup,

@@ -44,10 +44,15 @@ const verifyToken = (req, res, next) => {
   }
 }
 
+const createToken = (payload) => {
+  let token = jwt.sign(payload, APP_SECRET)
+  return token
+}
+
 module.exports = {
   hashPassword,
   comparePassword,
-  createToken,
   stripToken,
   verifyToken,
+  createToken,
 }

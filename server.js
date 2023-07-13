@@ -2,7 +2,7 @@ const express = require("express")
 const logger = require("morgan")
 const cors = require("cors")
 
-// const AuthRouter = require("./routes/AuthRouter")
+const AuthRouter = require("./routes/auth")
 const IdeaRouter = require("./routes/ideas")
 // const MapRouter = require("./routes/maps")
 
@@ -17,7 +17,7 @@ app.use(logger("dev"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// app.use("/auth", AuthRouter)
+app.use("/auth", AuthRouter)
 app.use("/ideas", IdeaRouter)
 // app.use("/", MapRouter)
 
