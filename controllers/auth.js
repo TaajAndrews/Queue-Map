@@ -1,6 +1,29 @@
 const { User } = require("../models/user")
 const middleware = require("../middleware/")
 
+const Signin = async (req, res) => {
+  try {
+    const { email, password } = req.body
+    const user = await User.findOne({ email })
+    let passwordMatch = await middleware.comparePassword(
+      user.passwordDigest,
+      password
+    )
+    if (passwordMatch) {
+      let payload = {
+        id: user.id,
+        email: user.email,
+      }
+      let token = middleware.createToken(payload)
+      return res.send({ user: payload, token })
+    }
+    res.status(401).send({ status: "Error", msg: "Unauthorized" })
+  } catch (error) {
+    console.log(error)
+    res.status(401).send({ status: "Error", msg: "An error has occurred!" })
+  }
+}
+
 const Signup = async (req, res) => {
   try {
     const { email, password, username } = req.body
@@ -22,5 +45,6 @@ const Signup = async (req, res) => {
 }
 
 module.exports = {
+  Signin,
   Signup,
 }
