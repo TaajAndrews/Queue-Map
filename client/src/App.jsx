@@ -7,7 +7,7 @@ import IdeaIndexPage from "./pages/IdeaIndexPage/IdeaIndexPage"
 import Header from "./components/Header/Header"
 
 const App = () => {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(null)
 
   return (
     <div>
