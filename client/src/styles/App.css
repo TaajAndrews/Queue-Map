@@ -1,4 +1,84 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   text-align: center;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #423E37;
+  padding: 2vmin;
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+}
+
+.form-wrapper {
+  padding: 5vmin;
+  margin: 5vmin 30vmin;
+  background-color: #EDEBD7;
+  border: .1vmin solid #EDEBD7;
+  border-radius: 1vmin;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1.25vmin;
+  color:  #423E37;
+}
+
+label {
+  font-size: 2vmin;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  padding: 1vmin;
+  font-size: 2vmin;
+  border: .1vmin solid #EDEBD7;
+  border-radius: .5vmin;
+  color: #423E37;
+  background-image: none !important; /* prevent lastpass */
+  outline: none;
+}
+
+input:focus {
+  border-color: #688E26;
+}
+
+button, a.button {
+  margin: 1vmin;
+  padding: 1vmin;
+  color: #EDEBD7;
+  background-color:  #688E26;
+  font-size: 2vmin;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border-radius: .5vmin;
+  outline: none;
+  cursor: pointer;
+}
+
+/* button:disabled, form:invalid button[type="submit"] {
+  cursor: not-allowed;
+  background-color: #425c16;
+} */
+
+
+button[type="submit"] {
+  grid-column: span 2;
+  margin: 1vmin 0 0;
 }

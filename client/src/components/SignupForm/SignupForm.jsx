@@ -19,45 +19,46 @@ const SignupForm = () => {
 
   const handleChange = (event) => {
     setFormState({ ...formState, [event.target.id]: event.target.value })
-    // const disable =
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Username:</label>
-      <input
-        type="text"
-        id="username"
-        onChange={handleChange}
-        value={formState.username}
-        required
-      />
-      <label htmlFor="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        onChange={handleChange}
-        value={formState.email}
-        required
-      />
-      <label htmlFor="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        onChange={handleChange}
-        value={formState.password}
-        required
-      />
-      <label htmlFor="confirmPassword">Confirm Password:</label>
-      <input
-        type="password"
-        id="confirm-password"
-        onChange={handleChange}
-        value={formState.confirmPassword}
-        required
-      />
-      <button type="submit">Send</button>
-    </form>
+    <div className="form-wrapper">
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          onChange={handleChange}
+          value={formState.username}
+          required
+        />
+        <label htmlFor="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          onChange={handleChange}
+          value={formState.email}
+          required
+        />
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          onChange={handleChange}
+          value={formState.password}
+          required
+        />
+        <label htmlFor="confirmPassword">Confirm Password:</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          onChange={handleChange}
+          value={formState.confirmPassword}
+          required
+        />
+        <button type="submit">Send</button>
+      </form>
+    </div>
   )
 }
 
