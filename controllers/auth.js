@@ -1,14 +1,42 @@
 const { User } = require("../models/user")
 const middleware = require("../middleware/")
 
+const Signup = async (req, res) => {
+  try {
+    const { email, password, username } = req.body
+    let passwordDigest = await middleware.hashPassword(password)
+    let currentUser = await User.findOne({ email })
+    if (currentUser) {
+      return res
+        .status(400)
+        .send("User already exists. Please sign in with your credentials.")
+    } else {
+      const user = await User.create({ username, email, passwordDigest })
+      res.send(user)
+    }
+  } catch (error) {
+    throw error
+  }
+}
+
 const Signin = async (req, res) => {
   try {
     const { email, password } = req.body
     const user = await User.findOne({ email })
+
+    if (!user) {
+      return res.send({ msg: "User Doesn't Exist! Create an Account" })
+    }
+
     let passwordMatch = await middleware.comparePassword(
       user.passwordDigest,
       password
     )
+
+    if (!passwordMatch) {
+      return res.send({ msg: "Username or Password is Incorrect" })
+    }
+
     if (passwordMatch) {
       let payload = {
         id: user.id,
@@ -21,26 +49,6 @@ const Signin = async (req, res) => {
   } catch (error) {
     console.log(error)
     res.status(401).send({ status: "Error", msg: "An error has occurred!" })
-  }
-}
-
-const Signup = async (req, res) => {
-  try {
-    const { email, password, username } = req.body
-    let passwordDigest = await middleware.hashPassword(password)
-    let existingUser = await User.findOne({ email })
-    if (existingUser) {
-      return res
-        .status(400)
-        .send(
-          "A user exists with that email. Please sign in with your credentials."
-        )
-    } else {
-      const user = await User.create({ username, email, passwordDigest })
-      res.send(user)
-    }
-  } catch (error) {
-    throw error
   }
 }
 
@@ -85,8 +93,8 @@ const CheckSession = async (req, res) => {
 //Function for changing password
 
 module.exports = {
-  Signin,
   Signup,
+  Signin,
   PasswordUpdate,
   CheckSession,
 }
