@@ -1,7 +1,7 @@
-import "./App.css"
+import "./styles/App.css"
 
 const App = () => {
-  return <div className="App"></div>
+  return <main className="App">App</main>
 }
 
 export default App
