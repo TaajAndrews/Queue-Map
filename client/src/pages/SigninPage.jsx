@@ -1,4 +1,4 @@
-import SigninForm from "../../components/SigninForm/SigninForm"
+import SigninForm from "../../components/SigninForm"
 
 const SigninPage = () => {
   return (

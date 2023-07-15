@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { RegisterUser, SignupUser } from "../services/Auth"
+import { SignupUser } from "../services/Auth"
 
 const SignupForm = () => {
   let navigate = useNavigate()
