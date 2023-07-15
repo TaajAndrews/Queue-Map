@@ -50,7 +50,7 @@ input {
   border: .1vmin solid #EDEBD7;
   border-radius: .5vmin;
   color: #423E37;
-  background-image: none !important; /* prevent lastpass */
+  background-image: none !important;
   outline: none;
 }
 
@@ -72,10 +72,10 @@ button, a.button {
   cursor: pointer;
 }
 
-/* button:disabled, form:invalid button[type="submit"] {
+button:disabled, form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: #425c16;
-} */
+  background-color: #87a357;
+}
 
 
 button[type="submit"] {

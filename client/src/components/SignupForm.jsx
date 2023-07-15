@@ -1,15 +1,22 @@
 import { useState } from "react"
+import ( usenavigate ) from "react-router-dom"
+import {RegisterUser} from "../servicesAuth"
 import axios from "axios"
 
 const SignupForm = () => {
-  const initialState = {
+  const [formState, setFormState] = useState({
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
-  }
+  })
 
-  const [formState, setFormState] = useState(initialState)
+  // Create error state
+  // const initialErrorState = {
+  //   error: "",
+  // }
+
+  // const [errorState, setErrorState] = useState(initialErrorState)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -18,8 +25,13 @@ const SignupForm = () => {
   }
 
   const handleChange = (event) => {
-    setFormState({ ...formState, [event.target.id]: event.target.value })
+    setFormState({ ...formState, [event.target.name]: event.target.value })
   }
+
+  // const handleDisable = (event) => {
+  //   const disable = event.target.password !== event.target.confirmPassword
+  //   return disable
+  // }
 
   return (
     <div className="form-wrapper">
@@ -28,6 +40,7 @@ const SignupForm = () => {
         <input
           type="text"
           id="username"
+          name="username"
           onChange={handleChange}
           value={formState.username}
           required
@@ -36,6 +49,7 @@ const SignupForm = () => {
         <input
           type="email"
           id="email"
+          name="email"
           onChange={handleChange}
           value={formState.email}
           required
@@ -44,6 +58,7 @@ const SignupForm = () => {
         <input
           type="password"
           id="password"
+          name="password"
           onChange={handleChange}
           value={formState.password}
           required
@@ -51,12 +66,22 @@ const SignupForm = () => {
         <label htmlFor="confirmPassword">Confirm Password:</label>
         <input
           type="password"
-          id="confirmPassword"
+          id="confirm-password"
+          name="confirmPassword"
           onChange={handleChange}
           value={formState.confirmPassword}
           required
         />
-        <button type="submit">Send</button>
+        <button
+          type="submit"
+          disabled={
+            !formState.email ||
+            (!formState.password &&
+              formState.password === formState.confirmPassword)
+          }
+        >
+          Sign Up
+        </button>
       </form>
     </div>
   )
