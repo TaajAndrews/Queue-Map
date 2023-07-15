@@ -1,9 +1,9 @@
 import { useState } from "react"
-import ( usenavigate ) from "react-router-dom"
-import {RegisterUser} from "../servicesAuth"
-import axios from "axios"
+import { useNavigate } from "react-router-dom"
+import { RegisterUser, SignupUser } from "../services/Auth"
 
 const SignupForm = () => {
+  let navigate = useNavigate()
   const [formState, setFormState] = useState({
     username: "",
     email: "",
@@ -11,27 +11,24 @@ const SignupForm = () => {
     confirmPassword: "",
   })
 
-  // Create error state
-  // const initialErrorState = {
-  //   error: "",
-  // }
-
-  // const [errorState, setErrorState] = useState(initialErrorState)
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    await axios.post("http://localhost:3001/auth/signup", formState)
-    setFormState(initialState)
-  }
-
   const handleChange = (event) => {
     setFormState({ ...formState, [event.target.name]: event.target.value })
   }
 
-  // const handleDisable = (event) => {
-  //   const disable = event.target.password !== event.target.confirmPassword
-  //   return disable
-  // }
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    await SignupUser({
+      name: formState.username,
+      email: formState.email,
+      password: formState.password,
+    })
+    setFormState({
+      username: "",
+      email: "",
+      password: "",
+    })
+    navigate("/signin")
+  }
 
   return (
     <div className="form-wrapper">
