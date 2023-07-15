@@ -6,6 +6,7 @@ const LandingPage = () => {
   return (
     <div>
       <section>
+        <h1>Landing Page</h1>
         <button onClick={() => navigate("/signin")}>
           Click Here to Get Started
         </button>
