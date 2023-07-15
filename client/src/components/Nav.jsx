@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 const Nav = ({ user, handleLogOut }) => {
-  let userOption
+  let userOptions
   if (user) {
     userOptions = (
       <nav>
