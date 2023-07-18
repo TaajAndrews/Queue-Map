@@ -1,39 +1,26 @@
 const { Idea } = require("../models")
 
 const GetIdeas = async (req, res) => {
-  try {
-    const ideas = await Idea.find({})
-    res.send(ideas)
-  } catch (error) {
-    throw error
-  }
+  let ideas = await Idea.find()
+  res.send(ideas)
 }
 
 const CreateIdea = async (req, res) => {
-  try {
-    const idea = await Idea.create({ ...req.body })
-    res.send(idea)
-  } catch (error) {
-    throw error
-  }
+  let newIdea = await Idea.create(req.body)
+  res.send(newIdea)
 }
 
 const UpdateIdea = async (req, res) => {
-  try {
-    const idea = await Idea.findByIdAndUpdate(req.params.idea_id, req.body)
-    res.send(idea)
-  } catch (error) {
-    throw error
-  }
+  let updatedIdea = await Idea.findByIdAndUpdate(req.params.idea_id, req.body, {
+    new: true,
+  })
+  res.send(updatedIdea)
 }
 
 const DeleteIdea = async (req, res) => {
-  try {
-    await Idea.deleteOne({ _id: req.params.idea_id })
-    res.send({ msg: "Idea Deleted", payload: req.params.idea_id, status: "Ok" })
-  } catch (error) {
-    throw error
-  }
+  let idea = req.params.id
+  let deletedIdea = await Idea.findByIdAndDelete(idea)
+  res.send(deletedIdea)
 }
 
 module.exports = {
