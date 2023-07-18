@@ -1,25 +1,12 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const { Schema } = require("mongoose")
 
 const ideaSchema = new Schema(
   {
-    topic: {
-      type: String,
-      required: true,
-    },
-    content: {
-      type: String,
-      required: true,
-    },
-    // Will need to separate the values out by comma
+    topic: { type: String, required: true },
+    content: { type: String },
     keywords: { type: String },
-    author: { type: Schema.Types.ObjectId, ref: "User" },
-    mapped: [{ type: Schema.Types.ObjectId, ref: "Map" }],
-    drafted: [{ type: Schema.Types.ObjectId, ref: "Draft" }],
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 )
 
-module.exports = mongoose.model("Idea", ideaSchema)
+module.exports = ideaSchema

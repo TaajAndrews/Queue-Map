@@ -11,13 +11,18 @@ const hashPassword = async (password) => {
 }
 
 const comparePassword = async (storedPassword, password) => {
-  let passwordMatch = await bcryot.compare(password, storedPassword)
+  let passwordMatch = await bcrypt.compare(password, storedPassword)
   return passwordMatch
+}
+
+const createToken = (payload) => {
+  let token = jwt.sign(payload, APP_SECRET)
+  return token
 }
 
 const stripToken = (req, res, next) => {
   try {
-    const token = req.headers["authrorization"].split("")[1]
+    const token = req.headers["authorization"].split(" ")[1]
     if (token) {
       res.locals.token = token
       return next()
@@ -25,7 +30,7 @@ const stripToken = (req, res, next) => {
     res.status(401).send({ status: "Error", msg: "Unauthorized" })
   } catch (error) {
     console.log(error)
-    res.status(401).send({ status: "Error", msg: "Strip Token Error" })
+    res.status(401).send({ status: "Error", msg: "Strip Token Error!" })
   }
 }
 
@@ -44,15 +49,10 @@ const verifyToken = (req, res, next) => {
   }
 }
 
-const createToken = (payload) => {
-  let token = jwt.sign(payload, APP_SECRET)
-  return token
-}
-
 module.exports = {
   hashPassword,
   comparePassword,
+  createToken,
   stripToken,
   verifyToken,
-  createToken,
 }

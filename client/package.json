@@ -1,7 +1,7 @@
 {
-  "name": "client",
+  "name": "queue-map",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,15 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^0.26.1",
+    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.1"
+    "react-router-dom": "^6.13.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
-    "@vitejs/plugin-react-swc": "^3.3.2",
-    "vite": "^4.4.0"
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "vite": "^4.3.9"
   }
 }

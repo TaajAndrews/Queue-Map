@@ -1,18 +1,17 @@
 import { useNavigate } from "react-router-dom"
 
-const LandingPage = () => {
+const Home = () => {
   let navigate = useNavigate()
 
   return (
-    <div>
-      <section>
-        <h1>Landing Page</h1>
+    <div className="home-container col">
+      <section className="welcome-signin">
         <button onClick={() => navigate("/signin")}>
-          Click Here to Get Started
+          Click Here To Get Started
         </button>
       </section>
     </div>
   )
 }
 
-export default LandingPage
+export default Home

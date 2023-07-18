@@ -1,19 +1,19 @@
 import Client from "./api"
 
-export const SigninUser = async (data) => {
+export const SignInUser = async (data) => {
   try {
-    const response = await Client.post("/auth/signin", data)
-    localStorage.setItem("token", response.data.token)
-    return response.data.user
+    const res = await Client.post("/auth/login", data)
+    localStorage.setItem("token", res.data.token)
+    return res.data.user
   } catch (error) {
     throw error
   }
 }
 
-export const SignupUser = async (data) => {
+export const RegisterUser = async (data) => {
   try {
-    const response = await Client.post("/auth/signup", data)
-    return response.data
+    const res = await Client.post("/auth/register", data)
+    return res.data
   } catch (error) {
     throw error
   }
@@ -21,8 +21,8 @@ export const SignupUser = async (data) => {
 
 export const CheckSession = async () => {
   try {
-    const response = await Client.get("/auth/session")
-    return response.data
+    const res = await Client.get("/auth/session")
+    return res.data
   } catch (error) {
     throw error
   }

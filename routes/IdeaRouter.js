@@ -1,25 +1,25 @@
 const router = require("express").Router()
-const controller = require("../controllers/ideas")
+const controller = require("../controllers/IdeaController")
 const middleware = require("../middleware")
 
-router.get("/", middleware.stripToken, middleware.verifyToken, controller.index)
+router.get("/", controller.GetIdeas)
 router.post(
   "/",
   middleware.stripToken,
   middleware.verifyToken,
-  controller.create
+  controller.CreateIdea
 )
 router.put(
   "/:idea_id",
   middleware.stripToken,
   middleware.verifyToken,
-  controller.update
+  controller.UpdateIdea
 )
 router.delete(
   "/:idea_id",
   middleware.stripToken,
   middleware.verifyToken,
-  controller.deleteIdea
+  controller.DeleteIdea
 )
 
 module.exports = router

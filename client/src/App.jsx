@@ -1,15 +1,22 @@
 import { useState, useEffect } from "react"
-import { Routes, Route } from "react-router-dom"
+import { Route, Routes } from "react-router"
 import { CheckSession } from "./services/Auth"
 import Nav from "./components/Nav"
-import SignupPage from "./pages/SignupPage"
-import SigninPage from "./pages/SigninPage"
-import LandingPage from "./pages/LandingPage"
-import IdeaLandingPage from "./pages/IdeaLandingPage"
+import Register from "./pages/Register"
+import SignIn from "./pages/SignIn"
+import IdeaIndexPage from "./pages/IdeaIndexPage"
+import Home from "./pages/Home"
 import "./styles/App.css"
 
 const App = () => {
   const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      checkToken()
+    }
+  }, [])
 
   const handleLogOut = () => {
     setUser(null)
@@ -21,22 +28,15 @@ const App = () => {
     setUser(user)
   }
 
-  useEffect(() => {
-    const token = localStorage.getItem("token")
-    if (token) {
-      checkToken()
-    }
-  }, [])
-
   return (
-    <div>
+    <div className="App">
       <Nav user={user} handleLogOut={handleLogOut} />
-      <main className="App">
+      <main>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/signin" element={<SigninPage setUser={setUser} />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/ideas" element={<IdeaLandingPage user={user} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignIn setUser={setUser} />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/ideas" element={<IdeaIndexPage user={user} />} />
         </Routes>
       </main>
     </div>
