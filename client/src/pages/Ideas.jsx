@@ -1,4 +1,4 @@
-import Client from ".//services/api"
+import Client from "../services/api"
 import { useState, useEffect } from "react"
 import { BASE_URL } from "../services/api"
 import axios from "axios"
@@ -63,11 +63,61 @@ const Ideas = () => {
   }, [])
 
   return (
-    <div className="form-wrapper">
-      <main>
-        <h1> Add an idea</h1>
-      </main>
-    </div>
+    <>
+      <div>
+        <div className="form-wrapper">
+          <h1>Add an idea</h1>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="topic">Topic</label>
+            <input
+              onChange={handleChange}
+              name="topic"
+              id="topic"
+              type="text"
+              value={formValues.topic}
+            />
+            <label htmlFor="content">Content</label>
+            <input
+              onChange={handleChange}
+              name="content"
+              id="content"
+              type="textarea"
+              value={formValues.content}
+            />
+            <label htmlFor="keywords">Keywords</label>
+            <input
+              onChange={handleChange}
+              name="keywords"
+              id="keywords"
+              type="text"
+              value={formValues.keywords}
+            />
+            <button type="submit">Add An Idea</button>
+          </form>
+        </div>
+      </div>
+      {/* <div>
+        <section>
+          {ideas.map((idea) => (
+            <div key={idea._id}>
+              <h4>{idea.content}</h4>
+              <button onClick={() => handleDelete(idea._id)}>
+                Delete Idea
+              </button>
+              <button onClick={() => handleEdit(idea._id)}>Edit Idea</button>
+              {editIdea === idea._id && (
+                <div>
+                  <input onChange={handleEdit} value={edit} />
+                  <button onClick={() => handleUpdate(idea._id)}>
+                    Update Idea
+                  </button>
+                </div>
+              )}
+            </div>
+          ))}
+        </section>
+      </div> */}
+    </>
   )
 }
 

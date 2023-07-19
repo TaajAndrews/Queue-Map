@@ -4,6 +4,7 @@ import { CheckSession } from "./services/Auth"
 import Nav from "./components/Nav"
 import Register from "./pages/Register"
 import SignIn from "./pages/SignIn"
+import Ideas from "./pages/Ideas"
 import IdeaIndexPage from "./pages/IdeaIndexPage"
 import Home from "./pages/Home"
 import "./styles/App.css"
@@ -36,7 +37,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/ideas" element={<IdeaIndexPage user={user} />} />
+          <Route path="/ideas/new" element={<Ideas />} />
+          <Route path="/ideas/all" element={<IdeaIndexPage />} />
         </Routes>
       </main>
     </div>

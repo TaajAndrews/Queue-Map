@@ -16,7 +16,8 @@ const IdeaIndexPage = ({ user }) => {
   }, [])
 
   return user ? (
-    <div className="grid col-4">
+    <div className="form-wrapper">
+      <h1>This is the idea index page</h1>
       {ideas.map((idea) => (
         <div className="card" key={idea.id}>
           <h3>{idea.topic}</h3>
