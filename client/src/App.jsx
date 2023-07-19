@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn"
 import Ideas from "./pages/Ideas"
 import IdeaIndexPage from "./pages/IdeaIndexPage"
 import Home from "./pages/Home"
+import Map from "./pages/Map"
 import "./styles/App.css"
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/ideas/new" element={<Ideas />} />
+          <Route path="/map" element={<Map />} />
           <Route path="/ideas/all" element={<IdeaIndexPage />} />
         </Routes>
       </main>
