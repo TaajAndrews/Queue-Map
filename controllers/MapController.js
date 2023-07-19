@@ -23,3 +23,5 @@ const deleteMap = async (req, res) => {
   const deletedMap = await Map.findByIdAndDelete(mapId)
   res.send(deletedMap)
 }
+
+module.exports = { createMap, getMaps, deleteMap }
