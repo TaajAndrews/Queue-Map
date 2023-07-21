@@ -16,12 +16,12 @@ const SignIn = ({ setUser }) => {
     const payload = await SignInUser(formValues)
     setFormValues({ email: "", password: "" })
     setUser(payload)
-    navigate("/feed")
+    navigate("/ideas")
   }
 
   return (
     <div className="signin col">
-      <div className="form-wrapper">
+      <div className="form-wrapper one">
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>

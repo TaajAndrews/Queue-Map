@@ -2,12 +2,12 @@ import { useState, useEffect } from "react"
 import { Route, Routes } from "react-router"
 import { CheckSession } from "./services/Auth"
 import Nav from "./components/Nav"
+import Home from "./pages/Home"
 import Register from "./pages/Register"
 import SignIn from "./pages/SignIn"
 import Ideas from "./pages/Ideas"
-import IdeaIndexPage from "./pages/IdeaIndexPage"
-import Home from "./pages/Home"
 import Map from "./pages/Map"
+import IdeaIndexPage from "./pages/IdeaIndexPage"
 import "./styles/App.css"
 
 const App = () => {
@@ -39,8 +39,8 @@ const App = () => {
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/ideas/new" element={<Ideas />} />
-          <Route path="/map" element={<Map />} />
-          <Route path="/ideas/all" element={<IdeaIndexPage />} />
+          <Route path="/maps/new" element={<Map />} />
+          <Route path="/ideas/IdeaIndexPage" element={<IdeaIndexPage />} />
         </Routes>
       </main>
     </div>

@@ -29,13 +29,14 @@ const Register = () => {
       password: "",
       confirmPassword: "",
     })
+    alert("registration complete. login")
     navigate("/signin")
   }
 
   return (
-    <div className="signin col">
-      <div className="form-wrapper">
-        <form className="col" onSubmit={handleSubmit}>
+    <div>
+      <div className="form-wrapper one">
+        <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="name">Name</label>
             <input

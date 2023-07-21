@@ -2,26 +2,41 @@ import Client from "../services/api"
 import { useState, useEffect } from "react"
 import { BASE_URL } from "../services/api"
 import axios from "axios"
+import { useGetUserToken } from "../hooks/useGetUserToken"
+import { useNavigate } from "react-router-dom"
 
 const Ideas = () => {
+  const navigate = useNavigate()
+
+  const userID = useGetUserToken()
+
   const [formValues, setFormValues] = useState({
     topic: "",
     content: "",
-    keywords: "",
+    keywords: [],
+    userOwner: userID,
   })
+
   const [ideas, setIdeas] = useState([])
   const [editIdea, setEditIdea] = useState(null)
   const [edit, setEdit] = useState("")
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    const { name, value } = e.target
+    setFormValues({ ...formValues, [name]: value })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let res = await Client.post("/ideas/new", formValues)
-    setIdeas([...ideas, res.data])
-    setFormValues({ topic: "", content: "", keywords: "" })
+    try {
+      let res = await Client.post("/ideas/new", formValues)
+      alert("Idea Created")
+      setIdeas([...ideas, res.data])
+      setFormValues({ topic: "", content: "", keywords: [] })
+      navigate("/")
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const handleIdeaEdit = (id) => {
@@ -54,6 +69,17 @@ const Ideas = () => {
     setIdeas(ideas.filter((idea) => idea._id !== id))
   }
 
+  const addKeyword = () => {
+    setFormValues({ ...formValues, keywords: [...formValues.keywords, ""] })
+  }
+
+  const handleKeywordChange = (e, idx) => {
+    const { value } = e.target
+    const keywords = formValues.keywords
+    keywords[idx] = value
+    setFormValues({ ...formValues, keywords })
+  }
+
   useEffect(() => {
     let GetIdeas = async () => {
       let res = await axios.get(`${BASE_URL}/ideas/all`)
@@ -65,7 +91,7 @@ const Ideas = () => {
   return (
     <>
       <div>
-        <div className="form-wrapper">
+        <div className="form-wrapper one">
           <h1>Add an idea</h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="topic">Topic</label>
@@ -85,6 +111,19 @@ const Ideas = () => {
               value={formValues.content}
             />
             <label htmlFor="keywords">Keywords</label>
+            {formValues.keywords.map((keyword, idx) => (
+              <input
+                key={idx}
+                type="text"
+                name="keywords"
+                value={keyword}
+                onChange={(e) => handleKeywordChange(e, idx)}
+              />
+            ))}
+
+            <button onClick={addKeyword} type="button">
+              + Keyword
+            </button>
             <input
               onChange={handleChange}
               name="keywords"
