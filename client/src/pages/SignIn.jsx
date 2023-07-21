@@ -16,7 +16,7 @@ const SignIn = ({ setUser }) => {
     const payload = await SignInUser(formValues)
     setFormValues({ email: "", password: "" })
     setUser(payload)
-    navigate("/ideas")
+    navigate("/")
   }
 
   return (
@@ -28,6 +28,7 @@ const SignIn = ({ setUser }) => {
             <input
               onChange={handleChange}
               name="email"
+              id="email"
               type="email"
               placeholder="example@example.com"
               value={formValues.email}
@@ -38,6 +39,7 @@ const SignIn = ({ setUser }) => {
             <label htmlFor="password">Password</label>
             <input
               onChange={handleChange}
+              id="password"
               type="password"
               name="password"
               value={formValues.password}

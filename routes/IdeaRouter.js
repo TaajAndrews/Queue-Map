@@ -3,6 +3,8 @@ const controller = require("../controllers/IdeaController")
 const middleware = require("../middleware")
 
 router.get("/", controller.GetIdeas)
+router.get("/savedIdeas/ids/:userID", controller.getSavedIdeas)
+router.get("/savedIdeas/:userID", controller.savedIdeas)
 router.post(
   "/",
   middleware.stripToken,

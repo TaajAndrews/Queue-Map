@@ -14,7 +14,7 @@ const createMap = async (req, res) => {
 }
 
 const getMaps = async (req, res) => {
-  let maps = await Map.find()
+  const maps = await Map.find()
   res.send(maps)
 }
 

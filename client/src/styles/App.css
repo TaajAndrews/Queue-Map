@@ -117,3 +117,12 @@ div.input-wrapper {
 .navbar a {
   text-decoration: none;
 }
+
+.navbar.short {
+  width: 50%;
+  align-items: center;
+}
+
+.idea-index ul{
+  text-decoration: none;
+}

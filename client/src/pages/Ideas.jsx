@@ -29,7 +29,7 @@ const Ideas = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      let res = await Client.post("/ideas/new", formValues)
+      let res = await Client.post("/ideas", formValues)
       alert("Idea Created")
       setIdeas([...ideas, res.data])
       setFormValues({ topic: "", content: "", keywords: [] })
